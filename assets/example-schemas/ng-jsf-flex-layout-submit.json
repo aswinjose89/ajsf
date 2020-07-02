@@ -1,0 +1,16 @@
+{
+  "schema": {
+    "type": "object",
+    "properties": {
+      "first_name": { "type": "string" },
+      "last_name": { "type": "string" }
+    },
+    "required": [ "last_name" ]
+  },
+  "layout": [
+    { "type": "flex", "flex-flow": "row wrap", "items": [ "first_name", "last_name" ] }
+  ],
+  "data": {
+    "first_name": "Aswin"
+  }
+}
