@@ -4,13 +4,13 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-import { Examples } from './example-schemas.model';
+import { Examples } from '../../example-schemas.model';
 import { JsonPointer } from '@ajsf/core';
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'demo',
-  templateUrl: 'demo.component.html',
+  selector: 'app-demo',
+  templateUrl: './demo.component.html',
+  styleUrls: ['./demo.component.scss'],
   animations: [
     trigger('expandSection', [
       state('in', style({ height: '*' })),
@@ -25,6 +25,7 @@ import { JsonPointer } from '@ajsf/core';
   ],
 })
 export class DemoComponent implements OnInit {
+
   examples: any = Examples;
   languageList: any = ['en', 'fr', 'it', 'pt', 'zh', 'de'];
   languages: any = {
@@ -251,4 +252,5 @@ export class DemoComponent implements OnInit {
     }
     this.generateForm(this.jsonFormSchema);
   }
+
 }

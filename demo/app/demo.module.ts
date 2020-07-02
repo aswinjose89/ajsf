@@ -5,33 +5,96 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSelectModule } from '@angular/material/select';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { AceEditorDirective } from './ace-editor.directive';
-import { DemoComponent } from './demo.component';
+import { DemoComponent } from './components/demo/demo.component';
 import { DemoRootComponent } from './demo-root.component';
 import { routes } from './demo.routes';
 import { JsonSchemaFormModule } from '@ajsf/core';
 import { Bootstrap4FrameworkModule } from '@ajsf/bootstrap4';
 import { Bootstrap3FrameworkModule } from '@ajsf/bootstrap3';
 import { MaterialDesignFrameworkModule } from '@ajsf/material';
+import { SubmitFormComponent, DialogOverviewExampleDialog } from './components/submit-form/submit-form.component';
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatStepperModule,
+} from '@angular/material';
 
+let materialComponent = [
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule
+  ]
 @NgModule({
-  declarations: [AceEditorDirective, DemoComponent, DemoRootComponent],
+  declarations: [AceEditorDirective, DemoComponent, DemoRootComponent, SubmitFormComponent,DialogOverviewExampleDialog],
   imports: [
     BrowserModule, BrowserAnimationsModule, FlexLayoutModule, FormsModule,
-    HttpClientModule, MatButtonModule, MatCardModule, MatCheckboxModule,
-    MatIconModule, MatMenuModule, MatSelectModule, MatToolbarModule,
+    HttpClientModule,
+    ...materialComponent,
     RouterModule.forRoot(routes),
     Bootstrap4FrameworkModule,
     Bootstrap3FrameworkModule,
     MaterialDesignFrameworkModule,
     JsonSchemaFormModule
+  ],
+  entryComponents: [
+    DialogOverviewExampleDialog
   ],
   bootstrap: [DemoRootComponent]
 })

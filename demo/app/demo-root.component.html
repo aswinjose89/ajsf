@@ -1,0 +1,46 @@
+<mat-toolbar color="primary" class="example-toolbar">
+	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
+	<h1 class="example-app-name">Angular JSON Schema Form — Demonstration Playground</h1>
+</mat-toolbar>
+<mat-sidenav-container class="example-container" autosize>
+	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+		<mat-nav-list>
+      <a [routerLink] = "['/home']">
+  			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+  				<span class="full-width" *ngIf="isExpanded || isShowing">Home</span>
+  				<mat-icon mat-list-icon>home</mat-icon>
+  			</mat-list-item>
+      </a>
+      <a [routerLink] = "['/submitForm']">
+  			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+  				<span class="full-width" *ngIf="isExpanded || isShowing">Form Submit</span>
+  				<mat-icon mat-list-icon>dynamic_form</mat-icon>
+  			</mat-list-item>
+      </a>
+			<!-- <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+				<a mat-list-item href="...">Submenu Item 1</a>
+				<a mat-list-item href="...">Submenu Item 2</a>
+				<mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent">
+					<span class="full-width" *ngIf="isExpanded || isShowing">Nested Menu</span>
+					<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+				</mat-list-item>
+				<div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || isExpanded">
+					<mat-list-item>SubSubmenu Item 1</mat-list-item>
+					<mat-list-item>SubSubmenu Item 2</mat-list-item>
+				</div>
+			</div> -->
+		</mat-nav-list>
+    <mat-nav-list>
+</mat-nav-list>
+	</mat-sidenav>
+
+	<div class="example-sidenav-content">
+		 <router-outlet></router-outlet>
+	</div>
+
+</mat-sidenav-container>
+<mat-toolbar color="primary" class="footer">
+  <div class="footer" #footer>
+    <h3>Copyright <span style="font-size: 12pt;color: black">by <a href="mailto:aswin1906@gmail.com" target="_blank">Aswin</a></span></h3>
+  </div>
+</mat-toolbar>

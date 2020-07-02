@@ -77,16 +77,16 @@ It is also possible to load multiple frameworks and switch between them at runti
 
 ### To install from GitHub
 
-To install [the library and the example playground from GitHub](https://github.com/hamzahamidi/ajsf), clone `https://github.com/hamzahamidi/ajsf.git` with your favorite git program. Or, assuming you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Node/YARN](https://nodejs.org/en/download/) installed, enter the following in your terminal:
+To install [the library and the example playground from GitHub](https://github.com/hamzahamidi/ajsf), clone `https://github.com/aswinjose89/ajsf.git` with your favorite git program. Or, assuming you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Node/YARN](https://nodejs.org/en/download/) installed, enter the following in your terminal:
 
 ```shell
-git clone https://github.com/hamzahamidi/ajsf.git ajsf
+git clone https://github.com/aswinjose89/ajsf.git ajsf
 cd ajsf
 yarn install
 yarn start
 ```
 
-This should start a server with the example playground, which you can view in your browser at `http://localhost:4200`
+This should start a server with the example playground, which you can view in your browser at `http://localhost:4200/home` or `http://localhost:4200/submitForm`
 
 The source code is composed as the following:
 
@@ -141,7 +141,7 @@ Angular JSON Schema Form can also create a form entirely from a JSON object—wi
 
 ```javascript
 exampleJsonObject = {
-  "first_name": "Jane", "last_name": "Doe", "age": 25, "is_company": false,
+  "first_name": "Aswin", "last_name": "Jose", "age": 25, "is_company": false,
   "address": {
     "street_1": "123 Main St.", "street_2": null,
     "city": "Las Vegas", "state": "NV", "zip_code": "89123"

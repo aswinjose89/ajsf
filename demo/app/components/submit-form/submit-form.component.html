@@ -1,0 +1,93 @@
+<mat-card fxFlex="0 0 calc(50% - 12px)">
+  <h4 class="default-cursor" (click)="toggleVisible('options')">
+    {{visible.options ? '▼' : '▶'}} Selected Framework and Options
+  </h4>
+  <div *ngIf="visible.options" fxLayout="column" [@expandSection]="true">
+    <mat-form-field>
+      <mat-select
+        [(ngModel)]="selectedFramework"
+        name="framework"
+        placeholder="Framework">
+        <mat-option
+          *ngFor="let framework of frameworkList"
+          [value]="framework">
+          {{frameworks[framework]}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select
+        [(ngModel)]="selectedLanguage"
+        (selectionChange)="loadSelectedLanguage()"
+        name="language"
+        placeholder="Language">
+        <mat-option
+          *ngFor="let language of languageList"
+          [value]="language">
+          {{languages[language]}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="check-row">
+      <mat-checkbox color="primary" [(ngModel)]="jsonFormOptions.returnEmptyFields">
+        Return empty fields?
+      </mat-checkbox>
+      (default = true)
+    </div>
+    <div class="check-row">
+      <mat-checkbox color="primary" [(ngModel)]="jsonFormOptions.addSubmit">
+        Add submit button?
+      </mat-checkbox>
+      (default = only add if no layout is defined)
+    </div>
+    <div class="check-row">
+      <mat-checkbox color="primary" [(ngModel)]="jsonFormOptions.defautWidgetOptions.feedback">
+        Show inline fedback?
+      </mat-checkbox>
+      (default = false)
+    </div>
+    <div class="check-row">
+      <mat-checkbox color="primary" [(ngModel)]="jsonFormOptions.debug">
+        Show debuging information?
+      </mat-checkbox>
+      (default = false)
+    </div>
+  </div>
+  <hr>
+  <h4 class="default-cursor" (click)="toggleVisible('schema')">
+    {{visible.schema ? '▼' : '▶'}} Input JSON Schema and Form Layout
+  </h4>
+  <div *ngIf="visible.schema" [@expandSection]="true"
+    ace-editor
+    [text]="jsonFormSchema"
+    [options]="aceEditorOptions"
+    [readOnly]="false"
+    [autoUpdateContent]="true"
+    (textChanged)="generateForm($event)"
+    style="width:100%; overflow: auto; border: 1px solid black;">
+    (loading form specification...)
+  </div>
+</mat-card>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Material Submit Form</mat-card-title>
+    <mat-card-subtitle>Helps to understand form submission</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <json-schema-form
+      loadExternalAssets="true"
+      [form]="jsonFormObject"
+      [options]="jsonFormOptions"
+      [framework]="selectedFramework"
+      [language]="selectedLanguage"
+      (onChanges)="onChanges($event)"
+      (onSubmit)="onSubmit($event)"
+      (isValid)="isValid($event)"
+      (validationErrors)="validationErrors($event)">
+    </json-schema-form>
+
+    <div style="margin-top:20px"><span style="font-weight:bold">Note:</span> LastName is a Required field...</div>
+  </mat-card-content>
+</mat-card>
